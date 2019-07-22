@@ -1,0 +1,28 @@
+plugins {
+    id "org.asciidoctor.convert" version "2.3.0"
+}
+
+apply plugin: 'java'
+
+version = '1.0.0'
+
+asciidoctor {
+    def source = project.sourceSets.main.java.srcDirs[0]
+    def build = file('build.gradle')
+
+    // add extra inputs since these include files that are included
+    inputs.dir source
+
+    attributes 'build-gradle': file('build.gradle'),
+            'sourcedir': source,
+            'endpoint-url': 'https://docs.ossez.com',
+            'source-highlighter': 'coderay',
+            'imagesdir': 'images',
+            'includedir': '_includes',
+            'toc': 'left',
+            'icons': 'font',
+            'setanchors': '',
+            'idprefix': '',
+            'idseparator': '-',
+            'docinfo1': ''
+}
