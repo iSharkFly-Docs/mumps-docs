@@ -1,0 +1,8 @@
+= Protocol Buffers 文档
+YuCheng Hu <yhu@ossez.com>
+:doctype: book
+:page-layout: docs
+:page-description: Protocol Buffers
+:page-keywords: Protocol Buffers
+
+Protocol Buffers 相关文档的内容。
