@@ -37,4 +37,4 @@ deploy:
   bucket: "com.ossez.docs"
   skip_cleanup: true
   local_dir: build/asciidoc/html5
-  upload-dir: akka-docs
+  upload-dir: protocol-buffers-docs
