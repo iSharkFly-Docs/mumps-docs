@@ -5,7 +5,12 @@ YuCheng Hu <yhu@ossez.com>
 :page-description: Protocol Buffers
 :page-keywords: Protocol Buffers
 
+:imagesdir: images
+:includedir: _includes
+
 Protocol Buffers 相关文档的内容。
+
+image::protocol-buffers-logo.jpg[]
 
 == Protocol Buffers 简介
 如果你在互联网上搜索的话，你可能会看到下面的说明文字。
