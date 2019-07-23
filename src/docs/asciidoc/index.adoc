@@ -10,6 +10,8 @@ YuCheng Hu <yhu@ossez.com>
 
 Protocol Buffers 相关文档的内容。
 
+image::https://travis-ci.org/cwiki-us-docs/protocol-buffers-docs.svg?branch=master[]
+
 image::protocol-buffers-logo.jpg[]
 
 == Protocol Buffers 简介
