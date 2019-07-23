@@ -31,3 +31,4 @@ Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用
 我们才考虑到了 Protocol Buffer 提供的功能。
 
 
+image::protocol-buffers-serialization.png[]
