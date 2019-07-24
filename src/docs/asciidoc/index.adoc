@@ -33,4 +33,7 @@ Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用
 我们才考虑到了 Protocol Buffer 提供的功能。
 
 
+== Protocol Buffers 文档快速导航
+* xref:developer_guide.adoc[开发者指南]
+
 image::protocol-buffers-serialization.png[]
