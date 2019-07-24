@@ -20,7 +20,7 @@ image::http://docs.ossez.com/protocol-buffers-docs/images/protocol-buffers-logo.
 
 === SCM (Source Control Management) 源代码
  * https://github.com/cwiki-us-docs/protocol-buffers-docs - Protocol Buffers 文档的源代码
- * https://github.com/cwiki-us-demo/protocol-buffers-demo-java - Protocol Buffers 文档的源代码示例程序
+ * https://github.com/cwiki-us-demo/protocol-buffers-demo-java - Protocol Buffers 示例程序
 
 
 == Protocol Buffers 简介
