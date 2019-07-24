@@ -66,7 +66,7 @@ message Person {
 
 然后你可以写一些类似 Person person; 的代码。
 
-[source,C/C++]
+[source,CPP]
 ----
 Person person;
 person.set_name("John Doe");
@@ -78,7 +78,7 @@ person.SerializeToOstream(&output);
 
 随后，你可以对消息进行读取：
 
-[source,C/C++]
+[source,CPP]
 ----
 fstream input("myfile", ios::in | ios::binary);
 Person person;
@@ -134,7 +134,7 @@ person {
 
 同时，对 protocol buffer 进行操作也是非常容易的：
 
-[source,C/C++]
+[source,CPP]
 ----
 cout << "Name: " << person.name() << endl;
 cout << "E-mail: " << person.email() << endl;
@@ -142,7 +142,7 @@ cout << "E-mail: " << person.email() << endl;
 
 如果使用的是 XML 的话，你需要进行下面的操作：
 
-[source,C/C++]
+[source,CPP]
 ----
 cout << "Name: "
      << person.getElementsByTagName("name")->item(0)->innerText()
@@ -156,3 +156,55 @@ cout << "E-mail: "
 因为你不能使用 protocol buffer 更好的在文档中进行交换。更主要的是 HTML 是人类可以阅读和编辑的。protocol buffer 也不是不可以人为的读取，但是针对原生的 protocol buffer 格式是没有办法人为进行读取和编辑的。
 
 XML 与  HTML 一样，在某种程度上是一种自我描述数据。protocol buffer 只针对你在 .proto 文件中描述的内容进行表达。
+
+== 看起来像一个解决方案，我应该如何开始呢
+Download the package – 这包中含有针对 Java, Python, 和 C++ protocol buffer 编译器源代码，和你需要进行 I/O 和测试的类。希望对你的编译器进行编译和构建，请参考代码中的 README 文件。
+
+一旦你完成了所有的设置，请参考 tutorial 页面中的内容来选择你需要的语言——这个能够帮助你使用 protocol buffer 创建一个简单的应用程序。
+
+== 介绍 proto3
+在我们最新的 version 3 发行版 中推出了新的语言版本 —— Protocol Buffers language version 3（另称 proto3），在这个版本中针对我们已经存在的语言版本（proto2）使用了一些新的特性。
+
+Proto3 简化了 protocol buffer 语言，使其更加容易使用并且能够支持更多的语言：我们当前发行的 proto3 能够让你创建 Java, C++, Python, Java Lite, Ruby, JavaScript, Objective-C, and C#。
+
+另外你也可以通过使用 Go protoc 插件来用 proto3 创建 Go 代码，这个插件你可以到 golang/protobuf Github 中下载到。更多的语言还在逐步进行支持中。
+
+请注意，这 2 个版本的 API 并不是完全兼容的。为了照顾还在使用老版本的用户，我们将会在新的 protocol buffers 发行中同时支持老的版本。
+
+你可以在下面的发行日志（release notes）查看 2 个版本的主要不同。有关 proto3 的句法，请参考 Proto3 Language Guide 中的内容，针对 proto3 的完整文档还没有编写完成，将会随后推出。
+
+看起来 proto2 和 proto3 可能会产生一些混淆，这是因为原始的开源  protocol buffers 实际上是 Google 内部语言的第二个版本，同时我们的开源版本也是从 v2.0.0 开始的。
+简单来说就是 proto 最开始的版本是 Google 内部使用的，在 proto 第二个版本的时候，Google 决定进行开源了，所以开源的 proto 是从 proto2 开始的。
+
+== 一个简短的历史
+Protocol buffers 最开始是在 Google 内部进行开发的，用于处理在索引服务器上请求/响应（request/response）的协议。
+
+在 Protocol buffers 之前，针对请求和响应，使用的是 marshalling/unmarshalling，这个能够支持一系列的协议。但是结果看起来却是非常的难看，例如：
+[source]
+----
+if (version == 3) {
+  ...
+} else if (version > 4) {
+  if (version == 5) {
+    ...
+  }
+  ...
+}
+----
+
+明确格式化的的协议也使新版本的协议更加难以推出，这是因为开发者必须能够了解老协议在服务器之间是如何进行处理的，同时也需要了解新的协议。只有对新老协议都有所了解后才能逐步使用新的协议替换老的协议。
+
+Protocol buffers 被用来设计解决上面的很多问题：
+
+* 新的字段比较能够容易的进行定义，中级服务器不需要对数据进行检查，直接对数据进行处理，同时也可以直接传输数据而不需要了解数据是如何进行定义的。
+* 格式使用自描述，能够更加容易支持更多的语言（C++，Java 等）。
+
+但是，用户还是需要手动书写他们自己的处理diam。
+
+作为系统的进化来说，它获得了许多其他的特性和用途：
+
+* 自动生成序列化和反序列化代码而避免手动书写这些代码。
+* 除了开始使用短期RPC（远程过程调用）请求，人们开始使用 protocol buffers 作为高效的自描述结构化数据格式（主要针对数据短期存在，例如在 Bigtable）。
+* 服务器RPC接口开始被声明为协议文件的一部分，协议编译器生成根类，用户可以通过服务器接口的实现和重载它们。
+
+Protocol buffers 在 Google 中成为针对数据的通用语言—— 随着时间的流逝，在 Google 内部已经有超过 348,952 .proto 文件被定义。这些被用在 RPC 系统和存储系统中存储数据。
