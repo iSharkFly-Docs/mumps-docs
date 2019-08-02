@@ -1,3 +1,4 @@
+
 plugins {
     id "org.asciidoctor.convert" version "2.3.0"
 }
@@ -21,4 +22,10 @@ asciidoctor {
             'idprefix': '',
             'idseparator': '-',
             'docinfo1': ''
+}
+
+allprojects {
+    repositories {
+        maven { url "http://m2.ossez.com/repository/internal" }
+    }
 }
