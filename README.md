@@ -1,3 +1,0 @@
-# messagepack-docs
-
-MessagePack Docs
