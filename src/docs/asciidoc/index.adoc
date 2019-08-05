@@ -1,0 +1,31 @@
+= MessagePack 文档
+YuCheng Hu <yhu@ossez.com>
+:doctype: book
+:page-layout: docs
+:page-description: MessagePack
+:page-keywords: MessagePack
+
+:imagesdir: images
+:includedir: _includes
+
+MessagePack 相关文档的内容。
+
+image::https://travis-ci.org/cwiki-us-docs/messagepack-docs.svg?branch=master[]
+
+image::messagepack-logo.png[]
+
+== MessagePack 简介
+MessagePack 是一个计算机的数据交换格式。
+
+MessagePack 是一个二进制的格式用来表达简单的数据结构,例如数组和关联数组。
+
+MessagePack 的目标尽量的简单和紧凑。官方的实现已经实现了多种语言，例如 C, C++, C#, D, Erlang, Go, Haskell, Java, JavaScript, Lua, OCaml, Perl, PHP, Python, Ruby, Scala, Smalltalk, 和 Swift。
+
+MessagePack 的了解就是传输的数据格式都是二进制，可以节省用户的流量。
+
+
+
+== Protocol Buffers 文档快速导航
+* xref:developer_guide.adoc[开发者指南]
+
+image::protocol-buffers-serialization.png[]
