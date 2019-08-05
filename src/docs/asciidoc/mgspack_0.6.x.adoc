@@ -45,21 +45,6 @@ MessagePack 针对 Java 的使用已经发布到 Maven 的中央仓库中（Mave
 
 [source]
 ----
-<dependency>
-    <groupId>org.msgpack</groupId>
-    <artifactId>msgpack</artifactId>
-    <version>${msgpack.version}</version>
-</dependency>
-----
-
-== Protocol Buffers 是如何进行工作的
-你需要制定你希望如何将你的数据进行序列化。你是通过 proto 文件来定义你的消息结构化数据的。
-
-每一 protocol buffer message 是一个小的信息记录逻辑，这个消息中包含有一系列的名字，变量对照序列。
-下面是一些基本的.proto 文件，这些文件中定义了一个消息，这个消息包含有一个 person 信息：
-
-[source]
-----
 $ git clone git@github.com:msgpack/msgpack-java.git
 $ cd msgpack-java
 $ mvn package
