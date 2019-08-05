@@ -1,4 +1,3 @@
-
 plugins {
     id "org.asciidoctor.convert" version "2.3.0"
 }
@@ -26,6 +25,6 @@ asciidoctor {
 
 allprojects {
     repositories {
-        maven { url "http://m2.ossez.com/repository/internal" }
+        maven { url "https://maven.ossez.com/repository/internal" }
     }
 }
