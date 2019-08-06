@@ -12,7 +12,7 @@ MessagePack 相关文档的内容。
 
 image::https://travis-ci.org/cwiki-us-docs/messagepack-docs.svg?branch=master[]
 
-image::messagepack-logo.png[]
+image::messagepack-logo.jpg[]
 
 == MessagePack 简介
 MessagePack 是一个计算机的数据交换格式。
@@ -27,4 +27,3 @@ MessagePack 的了解就是传输的数据格式都是二进制，可以节省�
 == MessagePack 文档快速导航
 * xref:mgspack_0.6.x.adoc[MessagePack Java 0.6.X 快速开始指南]
 
-image::protocol-buffers-serialization.png[]
