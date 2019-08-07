@@ -245,7 +245,7 @@ public class MessagePack6Objects {
 
 如上面提示的，你可以序列化和反序列化你自己的对象，前提是你自己的对象需要使用 '_@Message_' 注解。
 
-本代码可以在： https://github.com/cwiki-us-demo/messagepack-6-demo-java/blob/master/src/test/java/com/insight/demo/msgpack/MessagePack6Types.java 中找到。
+本代码可以在 https://github.com/cwiki-us-demo/messagepack-6-demo-java/blob/master/src/test/java/com/insight/demo/msgpack/MessagePack6Types.java 中查看。
 
 [source,java]
 ----
@@ -350,3 +350,107 @@ public class MessagePack6Types {
 
 '_Unpacker_' 同时也为参考变量提供了一个读取的方法。这个方法允许为一个参考变量从二进制数据中进行反序列化。参考变量的定义为你将类型指定为一个参数。
 例如，你希望反序列化二进制数据到 '_String_' (或者 '_byte[]_') 对象，你必须在调用 '_read(String.class)_' (或者 '_read(byte[].class)_') 方法的时候定义描述。
+
+== List, Map 对象的序列化和反序列化（serialization/deserialization）
+为了序列化原生的容器对象例如  '_List_' 和 '_Map_' 对象，你必须使用 '_Template_'。
+
+'_Template_' 对象是 serializer 和 deserializer 的配对。例如，为了序列化一个 '_List_' 对象，在 '_List_' 对象中 '_Integer_' 对象为元素，你可以使用下面的方法来创建一个模板对象（Template object）。
+
+[source,java]
+----
+Template listTmpl = Templates.tList(Templates.TInteger);
+----
+
+类 '_tList_'， '_TInteger_' 是静态方法，字段为 '_Templates_'。
+
+一个 '_List 和 '_Map_' 对象的用例如下显示：
+
+本代码可以在 https://github.com/cwiki-us-demo/messagepack-6-demo-java/blob/master/src/test/java/com/insight/demo/msgpack/MessagePack6Template.java 中查看。
+
+[source,java]
+----
+package com.insight.demo.msgpack;
+
+import org.junit.Test;
+import org.msgpack.MessagePack;
+import org.msgpack.packer.Packer;
+import org.msgpack.template.Template;
+import org.msgpack.unpacker.Unpacker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.math.BigInteger;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.msgpack.template.Templates.*;
+
+/**
+ * MessagePack6Template
+ *
+ * @author yhu
+ */
+public class MessagePack6Template {
+    final Logger logger = LoggerFactory.getLogger(MessagePack6Template.class);
+
+
+    /**
+     * Test MessagePack6Template
+     */
+    @Test
+    public void testMessagePack6Template() {
+        logger.debug("MessagePack6Template for Template");
+
+        MessagePack msgpack = new MessagePack();
+        try {
+
+            // Create templates for serializing/deserializing List and Map objects
+            Template<List<String>> listTmpl = tList(TString);
+            Template<Map<String, String>> mapTmpl = tMap(TString, TString);
+
+            //
+            // Serialization
+            //
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Packer packer = msgpack.createPacker(out);
+
+            // Serialize List object
+            List<String> list = new ArrayList<String>();
+            list.add("msgpack");
+            list.add("for");
+            list.add("java");
+            packer.write(list); // List object
+
+            // Serialize Map object
+            Map<String, String> map = new HashMap<String, String>();
+            map.put("sadayuki", "furuhashi");
+            map.put("muga", "nishizawa");
+            packer.write(map); // Map object
+
+            //
+            // Deserialization
+            //
+
+            byte[] bytes = out.toByteArray();
+            ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+            Unpacker unpacker = msgpack.createUnpacker(in);
+
+            // to List object
+            List<String> dstList = unpacker.read(listTmpl);
+
+            // to Map object
+            Map<String, String> dstMap = unpacker.read(mapTmpl);
+
+        } catch (Exception ex) {
+            logger.error("MessagePack Serialization And Deserialization error", ex);
+        }
+    }
+}
+
+----
