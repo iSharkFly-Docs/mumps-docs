@@ -237,3 +237,116 @@ public class MessagePack6Objects {
     }
 }
 ----
+
+=== 多种类型变量的序列化和反序列化（serialization/deserialization）
+
+类 '_Packer/Unpacker_' 允许序列化和反序列化多种类型的变量，如后续程序所示。这个类启用序列化和反序列化多种类型的变量和序列化主要类型变量以及包装类，'_String_' 对象，
+'_byte[]_' 对象，'_ByteBuffer 对象等的方法相似。
+
+如上面提示的，你可以序列化和反序列化你自己的对象，前提是你自己的对象需要使用 '_@Message_' 注解。
+
+本代码可以在： https://github.com/cwiki-us-demo/messagepack-6-demo-java/blob/master/src/test/java/com/insight/demo/msgpack/MessagePack6Types.java 中找到。
+
+[source,java]
+----
+package com.insight.demo.msgpack;
+
+import org.junit.Test;
+import org.msgpack.MessagePack;
+import org.msgpack.packer.Packer;
+import org.msgpack.unpacker.Unpacker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.math.BigInteger;
+import java.nio.ByteBuffer;
+
+/**
+ * MessagePack6Types
+ *
+ * @author yhu
+ */
+public class MessagePack6Types {
+    final Logger logger = LoggerFactory.getLogger(MessagePack6Types.class);
+
+
+    /**
+     * Test MessagePack6Types
+     */
+    @Test
+    public void testMessagePack6Types() {
+        logger.debug("testMessagePack6Types for Types");
+
+        MessagePack msgpack = new MessagePack();
+        try {
+
+            //
+            // Serialization
+            //
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            Packer packer = msgpack.createPacker(out);
+
+            // Serialize values of primitive types
+            packer.write(true); // boolean value
+            packer.write(10); // int value
+            packer.write(10.5); // double value
+
+            // Serialize objects of primitive wrapper types
+            packer.write(Boolean.TRUE);
+            packer.write(new Integer(10));
+            packer.write(new Double(10.5));
+
+            // Serialize various types of arrays
+            packer.write(new int[]{1, 2, 3, 4});
+            packer.write(new Double[]{10.5, 20.5});
+            packer.write(new String[]{"msg", "pack", "for", "java"});
+            packer.write(new byte[]{0x30, 0x31, 0x32}); // byte array
+
+            // Serialize various types of other reference values
+            packer.write("MessagePack"); // String object
+            packer.write(ByteBuffer.wrap(new byte[]{0x30, 0x31, 0x32})); // ByteBuffer object
+            packer.write(BigInteger.ONE); // BigInteger object
+
+            //
+            // Deserialization
+            //
+            byte[] bytes = out.toByteArray();
+            ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+            Unpacker unpacker = msgpack.createUnpacker(in);
+
+            // to primitive values
+            boolean b = unpacker.readBoolean(); // boolean value
+            int i = unpacker.readInt(); // int value
+            double d = unpacker.readDouble(); // double value
+
+            // to primitive wrapper value
+            Boolean wb = unpacker.read(Boolean.class);
+            Integer wi = unpacker.read(Integer.class);
+            Double wd = unpacker.read(Double.class);
+
+            // to arrays
+            int[] ia = unpacker.read(int[].class);
+            Double[] da = unpacker.read(Double[].class);
+            String[] sa = unpacker.read(String[].class);
+            byte[] ba = unpacker.read(byte[].class);
+
+            // to String object, ByteBuffer object, BigInteger object, List object and Map object
+            String ws = unpacker.read(String.class);
+            ByteBuffer buf = unpacker.read(ByteBuffer.class);
+            BigInteger bi = unpacker.read(BigInteger.class);
+
+        } catch (Exception ex) {
+            logger.error("MessagePack Serialization And Deserialization error", ex);
+        }
+    }
+}
+----
+
+方法 '_Packer#write()_' 允许序列化多种类型的数据。
+
+类 '_Unpacker_' 针对反序列化二进制数据为主要变量，提供了一个反序列化方法。例如，你希望将二进制数据反序列化为 '_boolean_' (或者 '_int_') 数据类型，你可以使用 '_Unpacker_' 中的 '_readBoolean_' (或者 '_readInt_') 方法。
+
+'_Unpacker_' 同时也为参考变量提供了一个读取的方法。这个方法允许为一个参考变量从二进制数据中进行反序列化。参考变量的定义为你将类型指定为一个参数。
+例如，你希望反序列化二进制数据到 '_String_' (或者 '_byte[]_') 对象，你必须在调用 '_read(String.class)_' (或者 '_read(byte[].class)_') 方法的时候定义描述。
