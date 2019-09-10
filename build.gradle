@@ -6,25 +6,89 @@ apply plugin: 'java'
 
 version = '1.0.0'
 
-asciidoctor {
-
-    def build = file('build.gradle')
-
-    attributes 'build-gradle': build,
-            'endpoint-url': 'https://docs.ossez.com',
-            'source-highlighter': 'coderay',
-            'imagesdir': 'images',
-            'includedir': '_includes',
-            'toc': 'left',
-            'icons': 'font',
-            'setanchors': '',
-            'idprefix': '',
-            'idseparator': '-',
-            'docinfo1': ''
-}
-
 allprojects {
     repositories {
         maven { url "https://maven.ossez.com/repository/internal" }
     }
+
+    ext {
+        environmentProperty = project.hasProperty('environment') ? getProperty('environment') : 'hsql'
+
+        docResourcesVersion = '0.1.0'
+
+    }
+
+    apply plugin: 'idea'
 }
+
+configurations {
+    docs
+}
+
+dependencies {
+    docs "com.ossez.docresources:ossez-doc-resources:${docResourcesVersion}@zip"
+}
+
+
+task prepareAsciidocBuildZH(type: Sync) {
+    dependsOn configurations.docs
+    // copy doc resources
+    from {
+        configurations.docs.collect { zipTree(it) }
+    }
+    // and doc sources
+    from "src/docs/asciidoc/"
+    // to a build directory of your choice
+    into "$buildDir/asciidoc/assemble"
+
+}
+
+task('makePDFZH', type: org.asciidoctor.gradle.AsciidoctorTask){
+    dependsOn prepareAsciidocBuildZH
+    backends 'pdf'
+    sourceDir "$buildDir/asciidoc/assemble"
+    sources {
+        include 'index-single.adoc'
+    }
+    options doctype: 'book', eruby: 'erubis'
+    logDocuments = true
+    attributes 'icons': 'font',
+            'sectanchors': '',
+            'sectnums': '',
+            'toc': '',
+            'source-highlighter' : 'coderay',
+            revnumber: project.version
+}
+
+
+
+asciidoctor {
+    dependsOn makePDFZH
+    backends 'html5'
+    sourceDir "$buildDir/asciidoc/assemble"
+    resources {
+        from(sourceDir) {
+            include 'images/*', 'css/**', 'js/**'
+        }
+    }
+    options doctype: 'book', eruby: 'erubis'
+    logDocuments = true
+    attributes 'docinfo': 'shared',
+            // use provided stylesheet
+            stylesdir: "css/",
+            stylesheet: 'ossez.css',
+            'linkcss': true,
+            'icons': 'font',
+            'sectanchors': '',
+            // use provided highlighter
+            'source-highlighter=highlight.js',
+            'highlightjsdir=js/highlight',
+            'highlightjs-theme=atom-one-dark-reasonable',
+            'idprefix': '',
+            'idseparator': '-',
+            'spring-version': project.version,
+            'allow-uri-read': '',
+            revnumber: project.version
+}
+
+
