@@ -1,6 +1,9 @@
 = MessagePack Java 0.6.X QuickStart
 YuCheng Hu <yhu@ossez.com>
 :doctype: book
+:toc: left
+:toclevels: 4
+
 :page-layout: docs
 :page-description: Protocol Buffers
 :page-keywords: Protocol Buffers
