@@ -1,17 +1,21 @@
 **NEW:** 获得 [免费的 JWT 手册（JWT Handbook）](https://auth0.com/resources/ebooks/jwt-handbook) 同时学习更多有关 JWT 的内容！
 
 ## 什么是 JSON Web Token（JWT）?
-JSON Web Token (JWT) 作为一个开放的标准 ([RFC 7519](https://tools.ietf.org/html/rfc7519))  定义了一种简洁自包含的方法用于通信双方之间以 JSON 对象的形式安全的传递信息。
-因为有数字签名，所以这些通信的信息能够被校验和信任。JWT 可以使用秘钥（secret）进行签名 (使用 **HMAC** 算法) 或使用 **RSA** 或 **ECDSA** 算法的公钥/私钥对（public/private key）。
 
-尽管 JWT 可以在通讯的双方之间通过提供秘钥（secret）来进行签名，我们将会更多关注 *已签名（signed）* 的 token。 
-通过签名的令牌可以验证其中数据的 *完整性（integrity）* ，而加密的令牌可以针对其他方 *隐藏（hide）* 申明。Signed tokens can verify the ** of the claims contained within it, while encrypted tokens ** those claims from other parties. 
+JSON Web Token (JWT) 作为一个开放的标准 ([RFC 7519](https://tools.ietf.org/html/rfc7519)) 定义了一种简洁自包含的方法用于通信双方之间以 JSON 对象的形式安全的传递信息。因为有数字签名，所以这些通信的信息能够被校验和信任。
+
+JWT 可以使用秘钥（secret）进行签名 (使用 **HMAC** 算法) 或使用 **RSA** 或 **ECDSA** 算法的公钥/私钥对（public/private key）。
+
+尽管 JWT 可以在通讯的双方之间通过提供秘钥（secret）来进行签名，我们将会更多关注 **已签名（signed）**的 token。 
+
+通过签名的令牌可以验证其中数据的 *完整性（integrity）* ，而加密的令牌可以针对其他方 *隐藏（hide）* 申明。
+
 当令牌（token）使用 公钥/私钥对（public/private key）进行签名的时候，只有持有私钥进行签名的一方是进行签名的。
 
 ### 关键术语的中英文对照
 * token - 令牌
 * secret - 秘钥
-* signature  - 签名
+* signature - 签名
 * claims - 要求或者数据
 
 
