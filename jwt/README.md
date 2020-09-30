@@ -1,6 +1,6 @@
-**NEW:** get the [JWT Handbook for free](https://auth0.com/resources/ebooks/jwt-handbook) and learn JWTs in depth!
+**NEW:** 获得 [免费的 JWT 手册（JWT Handbook）](https://auth0.com/resources/ebooks/jwt-handbook) 同时学习更多有关 JWT 的内容！
 
-## What is JSON Web Token?
+## 什么是 JSON Web Token（JWT）?
 JSON Web Token (JWT) is an open standard ([RFC 7519](https://tools.ietf.org/html/rfc7519)) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the **HMAC** algorithm) or a public/private key pair using **RSA** or **ECDSA**.
 
 Although JWTs can be encrypted to also provide secrecy between parties, we will focus on *signed* tokens. Signed tokens can verify the *integrity* of the claims contained within it, while encrypted tokens *hide* those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
