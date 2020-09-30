@@ -19,13 +19,13 @@ GitHub 上有关 CWIKIUS 的项目：[https://github.com/cwiki-us-docs/cwikius-d
 
 ![](https://cdn.ossez.com/img/cwikius/cwikius-qr-wechat-search-w400.png)
 
-## Spring 文档和手册快速导航
+## CWIKIUS 文档和手册快速导航
 
-在下面的表格中，我们列出了一些比较有用的 String Boot 教程的导航，在我们文档的整理中，也参考了一些这些文档。
+在下面的表格中，我们列出了一些比较有用的 CWIKIUS 相关软件开发使用教程的导航，在我们文档的整理中，也参考了一些这些文档。
 
 在这里对原作者表示感谢。
 
 | 网站名称  | URL  | NOTE  |
 |---|---|---|
-| github.io  | [https://cwiki-us-docs.github.io/cwikius-docs/#/](https://cwiki-us-docs.github.io/cwikius-docs/#/)  | 本手册的编译版本将会部署在这个链接上  |
+| [github.io](https://cwiki-us-docs.github.io/cwikius-docs/#/)  | [https://cwiki-us-docs.github.io/cwikius-docs/#/](https://cwiki-us-docs.github.io/cwikius-docs/#/)  | 本手册的编译版本将会部署在这个链接上  |
 | WWW.CWIKIUS.CN  | [http://www.cwikius.cn/](http://www.cwikius.cn/)  | CWIKIUS.CN 一个有独立思考和温度的清新站  |
