@@ -1,35 +1,48 @@
 **NEW:** 获得 [免费的 JWT 手册（JWT Handbook）](https://auth0.com/resources/ebooks/jwt-handbook) 同时学习更多有关 JWT 的内容！
 
 ## 什么是 JSON Web Token（JWT）?
-JSON Web Token (JWT) is an open standard ([RFC 7519](https://tools.ietf.org/html/rfc7519)) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. This information can be verified and trusted because it is digitally signed. JWTs can be signed using a secret (with the **HMAC** algorithm) or a public/private key pair using **RSA** or **ECDSA**.
+JSON Web Token (JWT) 作为一个开放的标准 ([RFC 7519](https://tools.ietf.org/html/rfc7519))  定义了一种简洁自包含的方法用于通信双方之间以 JSON 对象的形式安全的传递信息。
+因为有数字签名，所以这些通信的信息能够被校验和信任。JWT 可以使用秘钥（secret）进行签名 (使用 **HMAC** 算法) 或使用 **RSA** 或 **ECDSA** 算法的公钥/私钥对（public/private key）。
 
-Although JWTs can be encrypted to also provide secrecy between parties, we will focus on *signed* tokens. Signed tokens can verify the *integrity* of the claims contained within it, while encrypted tokens *hide* those claims from other parties. When tokens are signed using public/private key pairs, the signature also certifies that only the party holding the private key is the one that signed it.
+尽管 JWT 可以在通讯的双方之间通过提供秘钥（secret）来进行签名，我们将会更多关注 *已签名（signed）* 的 token。 
+通过签名的令牌可以验证其中数据的 *完整性（integrity）* ，而加密的令牌可以针对其他方 *隐藏（hide）* 申明。Signed tokens can verify the ** of the claims contained within it, while encrypted tokens ** those claims from other parties. 
+当令牌（token）使用 公钥/私钥对（public/private key）进行签名的时候，只有持有私钥进行签名的一方是进行签名的。
 
-## When should you use JSON Web Tokens?
-Here are some scenarios where JSON Web Tokens are useful:
+### 关键术语的中英文对照
+* token - 令牌
+* secret - 秘钥
+* signature  - 签名
+* claims - 要求或者数据
 
-- **Authorization**: This is the most common scenario for using JWT. Once the user is logged in, each subsequent request will include the JWT, allowing the user to access routes, services, and resources that are permitted with that token. Single Sign On is a feature that widely uses JWT nowadays, because of its small overhead and its ability to be easily used across different domains.
 
-- **Information Exchange**: JSON Web Tokens are a good way of securely transmitting information between parties. Because JWTs can be signed—for example, using public/private key pairs—you can be sure the senders are who they say they are. Additionally, as the signature is calculated using the header and the payload, you can also verify that the content hasn't been tampered with.
+## 什么时候应该使用JSON Web Tokens?
+在下面的一些场景中 JSON Web Tokens 可比较有用：
 
-## What is the JSON Web Token structure?
-In its compact form, JSON Web Tokens consist of three parts separated by dots (`.`), which are:
+- **认证鉴权（Authentication）**: 这是 JWT 最常见的应用场景。
+一旦用户成功登入，在随后的每次请求中都将会包含JWT信息。 通过JWT的验证机制后，将允许该用户访问路由（routes）、服务（services）以及该Token所允许的资源。
+因为 JWT 的开销非常小，使其非常容易在跨域环境下使用，现如今 JWT 被广泛应用到单点登录（Single Sign On）中。
 
-- Header
-- Payload
-- Signature
+- **信息交换（Information Exchange）**: 因为 JSON Web Tokens 是可以进行签名的，因此 JWT 能够在不同系统之间安全的传递信息。 
+例如基于使用公钥/私钥对（public/private key pairs），你可以确保请求的发送者是可信的。同时，因为头部（header）和负载（payload）的信息和内容都参与了计算，所以你可以验证内容是否被篡改过。
 
-Therefore, a JWT typically looks like the following.
+## JSON Web Token 的结构是什么？
+JSON Web Tokens 由使用  (`.`) 分开的 3 个部分组成的，这 3 个部分分别是：
+
+- 头部（Header）
+- 负载（Payload）
+- 签名（Signature）
+
+正是因为上面的组织形式，因此一个 JWT 通常看起如下面的表现形式。
 
 `xxxxx.yyyyy.zzzzz`
 
-Let's break down the different parts.
+让我们针对上面的形式来具体的分析下。
 
-### Header
+### 头部（Header）
 
-The header *typically* consists of two parts: the type of the token, which is JWT, and the signing algorithm being used, such as HMAC SHA256 or RSA.
+在头部的数据中 *通常* 包含有 2 部分的内容：token 的类型，这里使用的是字符 JWT，和使用的的签名加密算法，例如 SHA256 或者 RSA。
 
-For example:
+例如下面的格式：
 
 ```
 {
@@ -38,12 +51,12 @@ For example:
 }
 ```
 
-Then, this JSON is **Base64Url** encoded to form the first part of the JWT.
+然后，将上面的 JSON 数据格式使用 **Base64Url** 算法进行哈希，这样你就得到了 JWT 的第一部分。
 
-### Payload
+### 负载（Payload）
 
-The second part of the token is the payload, which contains the claims. Claims are statements about an entity (typically, the user) and additional data.
-There are three types of claims: *registered*, *public*, and *private* claims.
+JWT 的第二部分为负载，在负载中是由一些 claims 组成的。 Claims 是一些实体（通常指用户）和其他的一一些信息。
+有下面 3 种类型的 claims *registered*， *public* 和 *private* 。
 
 - [**Registered claims**](https://tools.ietf.org/html/rfc7519#section-4.1): These are a set of predefined claims which are not mandatory but recommended, to provide a set of useful, interoperable claims. Some of them are: **iss** (issuer), **exp** (expiration time), **sub** (subject), **aud** (audience), and [others](https://tools.ietf.org/html/rfc7519#section-4.1).
 
