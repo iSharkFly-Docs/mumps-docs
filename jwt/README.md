@@ -19,15 +19,16 @@ JWT 可以使用秘钥（secret）进行签名 (使用 **HMAC** 算法) 或使�
 * claims - 要求或者数据
 
 
-## 什么时候应该使用JSON Web Tokens?
+## 什么时候应该使用 JSON Web Tokens
 在下面的一些场景中 JSON Web Tokens 可比较有用：
 
-- **认证鉴权（Authentication）**: 这是 JWT 最常见的应用场景。
-一旦用户成功登入，在随后的每次请求中都将会包含JWT信息。 通过JWT的验证机制后，将允许该用户访问路由（routes）、服务（services）以及该Token所允许的资源。
-因为 JWT 的开销非常小，使其非常容易在跨域环境下使用，现如今 JWT 被广泛应用到单点登录（Single Sign On）中。
+* **认证鉴权（Authentication）**： 这是 JWT 最常见的应用场景。一旦用户成功登入，在随后的每次请求中都将会包含JWT信息。 通过JWT的验证机制后，将允许该用户访问路由（routes）、服务（services）以及该Token所允许的资源。因为 JWT 的开销非常小，使其非常容易在跨域环境下使用，现如今 JWT 被广泛应用到单点登录（Single Sign On）中。
 
-- **信息交换（Information Exchange）**: 因为 JSON Web Tokens 是可以进行签名的，因此 JWT 能够在不同系统之间安全的传递信息。 
-例如基于使用公钥/私钥对（public/private key pairs），你可以确保请求的发送者是可信的。同时，因为头部（header）和负载（payload）的信息和内容都参与了计算，所以你可以验证内容是否被篡改过。
+* **信息交换（Information Exchange）**： 因为 JSON Web Tokens 是可以进行签名的，因此 JWT 能够在不同系统之间安全的传递信息。 
+
+例如基于使用公钥/私钥对（public/private key pairs），你可以确保请求的发送者是可信的。
+
+同时，因为头部（header）和负载（payload）的信息和内容都参与了计算，所以你可以验证内容是否被篡改过。
 
 ## JSON Web Token 的结构是什么？
 JSON Web Tokens 由使用  (`.`) 分开的 3 个部分组成的，这 3 个部分分别是：
