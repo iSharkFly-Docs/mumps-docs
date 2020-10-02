@@ -82,7 +82,6 @@ JWT 的第二部分为负载，在负载中是由一些 claims 组成的。 Clai
 
 **[Private claims](https://tools.ietf.org/html/rfc7519#section-4.3)**：这些内容是自定义的内容，这部分的内容被用于在数据传输短间进行转换的数据。这些数据是没有在  registered 和 public 中间没有定义的内容。
 
-
 一个示例的负载：
 
 ````
@@ -92,7 +91,6 @@ JWT 的第二部分为负载，在负载中是由一些 claims 组成的。 Clai
 "admin": true
 }
 ````
-
 
 ### 负载（payload）
 中的数据也是经过 Base64Url  进行加密的，这部分加密的内容组成了 JWT 的第二部分。
