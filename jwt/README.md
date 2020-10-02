@@ -69,81 +69,96 @@ JSON Web Tokens 由使用  (`.`) 分开的 3 个部分组成的，这 3 个部�
 然后，将上面的 JSON 数据格式使用 **Base64Url** 算法进行哈希，这样你就得到了 JWT 的第一部分。
 
 ### 负载（Payload）
-
 JWT 的第二部分为负载，在负载中是由一些 claims 组成的。 Claims 是一些实体（通常指用户）和其他的一一些信息。
+
 有下面 3 种类型的 claims *registered*， *public* 和 *private* 。
 
-- [**Registered claims**](https://tools.ietf.org/html/rfc7519#section-4.1): These are a set of predefined claims which are not mandatory but recommended, to provide a set of useful, interoperable claims. Some of them are: **iss** (issuer), **exp** (expiration time), **sub** (subject), **aud** (audience), and [others](https://tools.ietf.org/html/rfc7519#section-4.1).
+**[Registered claims](https://tools.ietf.org/html/rfc7519#section-4.1)**：这些 claims 是预先定义的，这些配置的内容不是必须的但是是推荐使用的，因此提供了一系列约定俗成使用的。比如：iss（issuer）， exp（expiration time）, sub（subject），aud（audience）和其他的一些更多的配置。
 
-	> Notice that the claim names are only three characters long as JWT is meant to be compact.
+请注意，这些约定俗称的配置只有 3 个字符，以便于压缩数据量。
 
-- [**Public claims**](https://tools.ietf.org/html/rfc7519#section-4.2): These can be defined at will by those using JWTs. But to avoid collisions they should be defined in the [IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml) or be defined as a URI that contains a collision resistant namespace.
 
-- [**Private claims**](https://tools.ietf.org/html/rfc7519#section-4.3): These are the custom claims created to share information between parties that agree on using them and are neither *registered* or *public* claims.
+**[Public claims](https://tools.ietf.org/html/rfc7519#section-4.2)**：这些数据可以由使用 JWT 的用户自由去定义，但是为了避免冲突，你需要参考在 IANA JSON Web Token Registry  中对它们进行定义，或者将这些内容定义为 URI，并且需要避免可能出现的冲突。
 
-An example payload could be:
+**[Private claims](https://tools.ietf.org/html/rfc7519#section-4.3)**：这些内容是自定义的内容，这部分的内容被用于在数据传输短间进行转换的数据。这些数据是没有在  registered 和 public 中间没有定义的内容。
 
-```
+
+一个示例的负载：
+
+````
 {
-  "sub": "1234567890",
-  "name": "John Doe",
-  "admin": true
+"sub": "1234567890",
+"name": "John Doe",
+"admin": true
 }
-```
+````
 
-The payload is then **Base64Url** encoded to form the second part of the JSON Web Token.
 
-> Do note that for signed tokens this information, though protected against tampering, is readable by anyone. Do not put secret information in the payload or header elements of a JWT unless it is encrypted.
+### 负载（payload）
+中的数据也是经过 Base64Url  进行加密的，这部分加密的内容组成了 JWT 的第二部分。
 
-### Signature
-To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
+请注意：针对令牌这部分的签名已经被防范篡改。但是这部分还是可以被解密的，因此请不要将任何密钥放到这部分的数据中，除非你的密钥是已经加密过的密钥。
 
-For example if you want to use the HMAC SHA256 algorithm, the signature will be created in the following way:
+### 签名（Signature）
+为了创建一个加密部分，你需要有已经编码过的头部和负载，然后你还需要一个密钥（secret）和一个已经在头部中指定的加密算法来进行签名。
 
-```
+例如，如果你希望使用 HMAC SHA256 算法来进行签名，那么这个算法中使用的数据为：
+
+````
 HMACSHA256(
-  base64UrlEncode(header) + "." +
-  base64UrlEncode(payload),
-  secret)
-```
+base64UrlEncode(header) + "." +
+base64UrlEncode(payload),
+secret)
+````
+签名的作用主要用于校验传输的令牌（Token）数据没有在过程中被篡改。
 
-The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is.
+如果你的令牌是通过私有密钥进行签名的，那么也可以对 JWT 进行校验，以确定 JWT 的发送方使用是合法的签名。
 
-### Putting all together
+## 将所有内容整合在一起
 
-The output is three Base64-URL strings separated by dots that can be easily passed in HTML and HTTP environments, while being more compact when compared to XML-based standards such as SAML.
+将这个 3 部分的内容使用 Base64-URL 编码后整合到一起，将每部分的数据直接使用 点号（.） 进行分隔，以确保令牌数据能够比较容易的在网络 HTTP 和 HTML 环境中进行传输。
 
-The following shows a JWT that has the previous header and payload encoded, and it is signed with a secret.
-![Encoded JWT](https://cdn.auth0.com/content/jwt/encoded-jwt3.png)
+针对使用 XML 的令牌，例如 SAML 来说，JWT 显得更加简洁和高效。
 
-If you want to play with JWT and put these concepts into practice, you can use [jwt.io Debugger](https://jwt.io/#debugger-io) to decode, verify, and generate JWTs.
+下面是使用了头部信息，负载信息和数字签名然后组合到一起的一个 JWT 令牌示例：
 
-![JWT.io Debugger](https://cdn.auth0.com/blog/legacy-app-auth/legacy-app-auth-5.png)
+![encoded-jwt3|690x159](upload://2AeKa0TyLI3zWd5H2sgyU1ycgql.png) 
 
-## How do JSON Web Tokens work?
-In authentication, when the user successfully logs in using their credentials, a JSON Web Token will be returned. Since tokens are credentials, great care must be taken to prevent security issues. In general, you should not keep tokens longer than required.
 
-You also [should not store sensitive session data in browser storage due to lack of security](https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#local-storage).
+如果你想使用 JWT，并且对一个已有的 JWT 令牌进行解密的话，你可以使用 https://jwt.io/#debugger-io 网站上提供的工具来对 JWT 字符串进行解密，校验和生产一个 JWT 令牌。
 
-Whenever the user wants to access a protected route or resource, the user agent should send the JWT, typically in the **Authorization** header using the **Bearer** schema. The content of the header should look like the following:
+![legacy-app-auth-5|444x500](upload://fRirnl7MuK75dXyNIMIsJQ24lLp.png)
 
-```
-Authorization: Bearer <token>
-```
+## JSON Web Tokens 是如何工作的
+在用户权限校验的过程中，一个用户如果使用授权信息成功登录后，一个 JSON Web Token 将会返回给用户端。
 
-This can be, in certain cases, a stateless authorization mechanism. The server's protected routes will check for a valid JWT in the `Authorization` header, and if it's present, the user will be allowed to access protected resources. If the JWT contains the necessary data, the need to query the database for certain operations may be reduced, though this may not always be the case.
+因为返回的令牌包含有授权信息，应用程序应小心保存这些授权信息，以避免不必要的安全问题。你的应用程序在不需要授权信息的时候，应用程序不应该保留授权成功后返回的令牌。
 
-If the token is sent in the `Authorization` header, Cross-Origin Resource Sharing (CORS) won't be an issue as it doesn't use cookies.
+应用程序也不应该将这些敏感信息保存在浏览器中，因为这样会更加容易导致信息泄漏，请参考链接：https://cheatsheetseries.owasp.org/cheatsheets/HTML5_Security_Cheat_Sheet.html#local-storage 中的内容。
 
-The following diagram shows how a JWT is obtained and used to access APIs or resources:
+在任何时候，如果用户希望访问一个受保护的资源或者路由的时候，用户应该在访问请求中包含 JWT 令牌。通常这个令牌是存储在 HTTP 请求的头部信息，一般会使用 Authorization 字段，使用 Bearer 模式。
 
-![How does a JSON Web Token work](https://cdn2.auth0.com/docs/media/articles/api-auth/client-credentials-grant.png)
+Http 头部发送给后台所包含的内容看起来如下所示：
 
-1. The application or client requests authorization to the authorization server. This is performed through one of the different authorization flows. For example, a typical [OpenID Connect](http://openid.net/connect/) compliant web application will go through the `/oauth/authorize` endpoint using the [authorization code flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth).
-2. When the authorization is granted, the authorization server returns an access token to the application.
-3. The application uses the access token to access a protected resource (like an API).
 
-Do note that with signed tokens, all the information contained within the token is exposed to users or other parties, even though they are unable to change it. This means you should not put secret information within the token.
+    Authorization: Bearer <token>
+
+在某些情况下，可以使用无状态的授权机制。服务器上受保护的路由将会检查随着访问提交的 JWT 令牌。如果令牌是有效的，用户将会被允许访问特定的资源。
+
+如果 JWT 令牌中包含有必要的信息，服务器的服务端将不需要再次对数据库进行查询以加快访问速度。当然，不是所有的时候都可以这样进行处理。
+
+当令牌随着头部中的 Authorization 信息一同发送，那么我们不需要使用 cookies，因此跨域访问（Cross-Origin Resource Sharing (CORS)）也不应该成为一个问题。
+
+下面的示例图展示了JWT 是如何被获得的，同时也展示了 JWT 是如何被使用来访问服务器 API 的。
+
+![client-credentials-grant|690x262](upload://yTIKxFppEa0pugt4XLIaho9xQQH.png) 
+
+1. 应用程序或者客户端，通过对授权服务器的访问来获得授权。这个可能有不同的授权模式。例如，通常我们可以使用 OpenID Connect 提供的标准的授权地址来进行授权，请参考链接：http://openid.net/connect/。通常来说一个标准的授权地址为 /oauth/authorize，并且使用下面类似的标准授权流程，请参考链接：http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth 中的内容。
+2. 当授权完成后，授权服务器将会返回访问令牌（access token）给应用。
+3. 应用使用获得的令牌来访问收到保护的资源（例如 API）等。
+
+需要注意的是，通过使用了签名的令牌，尽管用户可能没有办法对使用的令牌进行修改，但是令牌中包含的所有信息将会暴露给用户或者其他的应用。因此，你不应该在你的令牌中存储密钥或者任何的敏感信息。
+
 
 ## Why should we use JSON Web Tokens?
 
