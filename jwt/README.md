@@ -120,12 +120,12 @@ secret)
 
 下面是使用了头部信息，负载信息和数字签名然后组合到一起的一个 JWT 令牌示例：
 
-![encoded-jwt3|690x159](upload://2AeKa0TyLI3zWd5H2sgyU1ycgql.png) 
+![encoded-jwt3|690x159](https://cdn.ossez.com/discourse-uploads/original/1X/121d022249f2480ae2f7d561c548b46964cd3541.png) 
 
 
 如果你想使用 JWT，并且对一个已有的 JWT 令牌进行解密的话，你可以使用 https://jwt.io/#debugger-io 网站上提供的工具来对 JWT 字符串进行解密，校验和生产一个 JWT 令牌。
 
-![legacy-app-auth-5|444x500](upload://fRirnl7MuK75dXyNIMIsJQ24lLp.png)
+![legacy-app-auth-5|444x500](https://cdn.ossez.com/discourse-uploads/original/1X/6f26f249120d29f78d9b156df489c97c127a0d8f.png)
 
 ## JSON Web Tokens 是如何工作的
 在用户权限校验的过程中，一个用户如果使用授权信息成功登录后，一个 JSON Web Token 将会返回给用户端。
@@ -149,7 +149,7 @@ Http 头部发送给后台所包含的内容看起来如下所示：
 
 下面的示例图展示了JWT 是如何被获得的，同时也展示了 JWT 是如何被使用来访问服务器 API 的。
 
-![client-credentials-grant|690x262](upload://yTIKxFppEa0pugt4XLIaho9xQQH.png) 
+![client-credentials-grant|690x262](https://cdn.ossez.com/discourse-uploads/original/1X/f496687a5b020911f23e8facd5da5779d1a88a5b.png) 
 
 1. 应用程序或者客户端，通过对授权服务器的访问来获得授权。这个可能有不同的授权模式。例如，通常我们可以使用 OpenID Connect 提供的标准的授权地址来进行授权，请参考链接：http://openid.net/connect/。通常来说一个标准的授权地址为 /oauth/authorize，并且使用下面类似的标准授权流程，请参考链接：http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth 中的内容。
 2. 当授权完成后，授权服务器将会返回访问令牌（access token）给应用。
@@ -158,19 +158,22 @@ Http 头部发送给后台所包含的内容看起来如下所示：
 需要注意的是，通过使用了签名的令牌，尽管用户可能没有办法对使用的令牌进行修改，但是令牌中包含的所有信息将会暴露给用户或者其他的应用。因此，你不应该在你的令牌中存储密钥或者任何的敏感信息。
 
 
-## Why should we use JSON Web Tokens?
+## 为什么我们需要使用 JSON Web Tokens
 
-Let's talk about the benefits of **JSON Web Tokens (JWT)** when compared to **Simple Web Tokens (SWT)** and **Security Assertion Markup Language Tokens (SAML)**.
+让我们讨论下 JSON Web Tokens (JWT) 针对  Simple Web Tokens (SWT) 和 Security Assertion Markup Language Tokens (SAML) 而言有什么优势吧。
 
-As JSON is less verbose than XML, when it is encoded its size is also smaller, making JWT more compact than SAML. This makes JWT a good choice to be passed in HTML and HTTP environments.
+相对 XML 来说，JSON 格式更加简洁，对 JSON 格式进行编码后的数据量更小，这就使得 JWT 相对 SAML 来说显得更加小巧，这使得 JWT 更加容易能够在 HTTP 和 HTML 环境之间传递数据。
 
-Security-wise, SWT can only be symmetrically signed by a shared secret using the HMAC algorithm. However, JWT and SAML tokens can use a public/private key pair in the form of a X.509 certificate for signing. Signing XML with XML Digital Signature without introducing obscure security holes is very difficult when compared to the simplicity of signing JSON.
+在安全性上面，SWT 只能使用通过 HMAC 算法的对称方式签名。JWT 和 SAML 都可以使用基于 X.509 认证的公钥/私钥 密钥对的方式进行加密和解密。相比针对 JSON 格式的签名，针对XML 的数字签名更加容易导入安全漏洞。
 
-JSON parsers are common in most programming languages because they map directly to objects. Conversely, XML doesn't have a natural document-to-object mapping. This makes it easier to work with JWT than SAML assertions.
+在 JSON 格式的处理上，当前几乎所有的语言都能够支持和进行解析，这是因为 JSON 格式的数据更加容易映射到数据对象中。XML 则没有针对文本到对象的映射支持。这就导致了相对 SAML 来说，JWT 的处理更加容易。
 
-Regarding usage, JWT is used at Internet scale. This highlights the ease of client-side processing of the JSON Web token on multiple platforms, especially mobile.
+在使用方面，JWT 已经被大量的在互联网上面取得了应用，针对多平台的使用上，JSON 格式在客户端上面更加容易被使用，尤其是针对移动平台。
 
-![Comparing the length of an encoded JWT and an encoded SAML](https://cdn.auth0.com/content/jwt/comparing-jwt-vs-saml2.png)
-_Comparison of the length of an encoded JWT and an encoded SAML_
+针对 JSON 和 SAML 数据格式的内容对比，请参考下面的图片：
 
-If you want to read more about JSON Web Tokens and even start using them to perform authentication in your own applications, browse to the [JSON Web Token landing page](http://auth0.com/learn/json-web-tokens) at Auth0.
+![comparing-jwt-vs-saml2|325x500](https://cdn.ossez.com/discourse-uploads/original/1X/54150ee8f3cba3b6afa81a1046ec400004fa3a34.png) 
+
+从上面的图片的对比上，我们可以看到基于 JSON 格式的内容更少，表达性更好。
+
+如果你希望了解更多有关 JSON Web Tokens 的使用，并且打算开始在你的系统中应用这种格式，请参考由 Auth0 官方提供的介绍和文档，访问链接是：http://auth0.com/learn/json-web-tokens。
