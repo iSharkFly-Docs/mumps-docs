@@ -14,10 +14,17 @@ GitHub 上有关 CWIKIUS 的项目：[https://github.com/cwiki-us-docs/cwikius-d
 | QQ 交流群 Spring | 15186112 |
 | 社区论坛 | [https://www.ossez.com/](https://www.ossez.com/) |
 
-### 微信及公众平台
-我们建议您通过社区论坛来和我们进行沟通，请关注我们的微信公众号。
+## 公众平台
+我们建议您通过社区论坛来和我们进行沟通，请关注我们公众平台上的账号
 
+### 微信公众号
 ![](https://cdn.ossez.com/img/cwikius/cwikius-qr-wechat-search-w400.png)
+
+### 头条号
+我们也在头条号上创建了我们的公众号，请扫描下面的 QR 关注我们的头条号。
+
+![](https://cdn.ossez.com/img/cwikius/cwikus-qr-toutiao.png)
+
 
 ## CWIKIUS 文档和手册快速导航
 
