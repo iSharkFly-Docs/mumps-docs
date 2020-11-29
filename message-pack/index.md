@@ -1,39 +1,5 @@
-= Protocol Buffers 文档
-YuCheng Hu <yhu@ossez.com>
-:doctype: book
-:page-layout: docs
-:page-description: Protocol Buffers
-:page-keywords: Protocol Buffers
+= MessagePack 文档
 
-:imagesdir: images
-:includedir: _includes
-
-Protocol Buffers 相关文档的内容。
-
-image::https://travis-ci.org/cwiki-us-docs/protocol-buffers-docs.svg?branch=master[]
+MessagePack 的相关文档，本文是根据官方的内容和我们项目中的具体实践进行编辑的。
 
 ![messagepack logo](_images/messagepack-logo.jpg)
-
-== Protocol Buffers 简介
-如果你在互联网上搜索的话，你可能会看到下面的说明文字。
-
-""
-Google Protocol Buffer( 简称 Protobuf) 是 Google 公司内部的混合语言数据标准，目前已经正在使用的有超过 48,162 种报文格式定义和超过 12,183 个 .proto 文件。
-
-他们用于 RPC 系统和持续数据存储系统。
-
-Protocol Buffers 是一种轻便高效的结构化数据存储格式，可以用于结构化数据串行化，或者说序列化。
-
-它很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。
-
-目前提供了 C++、Java、Python 三种语言的 API。
-""
-
-我们是在实际的数据处理的时候，需要使用 JSON 来序列化数据，但是又考虑到 JSON 在传输的时候数据过大，同时还有很多并不需要的垃圾文件。
-我们才考虑到了 Protocol Buffer 提供的功能。
-
-
-== Protocol Buffers 文档快速导航
-* xref:developer_guide.adoc[开发者指南]
-
-image::protocol-buffers-serialization.png[]
