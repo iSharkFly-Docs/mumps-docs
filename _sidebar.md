@@ -7,6 +7,7 @@
   
 - 其他小工具
   - [JWT](jwt/README.md)
+  - [MessagePack](message-pack/README.md)
 
 - [Awesome docsify](awesome.md)
 - [Changelog](changelog.md)
