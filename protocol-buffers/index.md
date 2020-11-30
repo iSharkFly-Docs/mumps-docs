@@ -219,5 +219,3 @@ Protocol buffers 被用来设计解决上面的很多问题：
 
 Protocol buffers 在 Google 中成为针对数据的通用语言—— 随着时间的流逝，在 Google 内部已经有超过 348,952 .proto 文件被定义。这些被用在 RPC 系统和存储系统中存储数据。
 
-
-
