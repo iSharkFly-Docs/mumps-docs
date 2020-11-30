@@ -8,6 +8,7 @@
 - 其他小工具
   - [JWT](jwt/README.md)
   - [MessagePack](message-pack/index.md)
+  - [Protocol Buffers](protocol-buffers/index.md)
 
 - [Awesome docsify](awesome.md)
 - [Changelog](changelog.md)
