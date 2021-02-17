@@ -2,8 +2,9 @@
   - [文档介绍和快速链接](README.md)
   - [公众平台](CONTACT.md)
 
-- Gradle
-  - [Deploy](deploy.md)
+- Java
+  - [spring](spring.md)
+  - [Gradle](gradle.md)
   
 - 其他小工具
   - [JWT](jwt/README.md)
