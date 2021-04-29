@@ -13,6 +13,7 @@
 
 - 面试和算法
   - [面试问题和经验](interview/index.md)
+  - [算法题](algorithm/index.md)
   
 - [Awesome docsify](awesome.md)
 - [Changelog](changelog.md)
