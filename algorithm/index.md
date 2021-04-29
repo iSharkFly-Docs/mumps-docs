@@ -15,4 +15,5 @@
 
 ### 内容索引
 * [A “word-wrap” functionality（一个字符串包裹函数）](https://www.ossez.com/t/a-word-wrap-functionality/13452)
+* [Prime numbers from 1 to 100 (打印 100 以内的素数)](https://www.ossez.com/t/prime-numbers-from-1-to-100-100/13450)
 
