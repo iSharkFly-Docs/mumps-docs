@@ -18,7 +18,7 @@
 
 ### 2021
 * [2021 疫情期间美国公司技术岗的面试流程](https://www.ossez.com/t/topic/13463)
-* [从拒绝到被拒绝](https://www.ossez.com/t/topic/13462)
+* [从拒绝到拒绝](https://www.ossez.com/t/topic/13462)
 * [从一个工作到一个工作](https://www.ossez.com/t/topic/13461)
 * [北美亚特兰大一金融服务公司面试总结](https://www.ossez.com/t/topic/13453)
 * [北美一工作搜索引擎公司技术岗面经](https://www.ossez.com/t/topic/13451)
