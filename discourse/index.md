@@ -2,14 +2,14 @@
 
 ## 云平台安装
 **在基于云平台的 Discourse 安装通常不会超过 30 分钟**，哪怕你没有任何有关 Rails 或 Linux shell 的知识都能够顺利完成安装。
-下面我们是通过 [DigitalOcean](https://www.digitalocean.com/?refcode=5fa48ac82415) 服务提供商来进行安装测的，但是所有的安装步骤都能够在
+下面我们是通过 [DigitalOcean][do] 服务提供商来进行安装测的，但是所有的安装步骤都能够在
 所有兼容 **Docker** 的云计算平台上进行，同时也可以在本地的服务器上完成安装。
 
 >  🔔 如果你连 30 分钟都没有的话？你可以联系 Discourse 社区来帮你完成安装，Discourse 社区将会收取一次性 $150 （美元）的费用。 [单击此处链接来对服务进行购买](https://www.literatecomputing.com/product/discourse-install/) 。
 
 ### 创建一个新的云服务器
 
-创建一个你的新云服务器，例如：[DigitalOcean](https://www.digitalocean.com/?refcode=5fa48ac82415)，当然你也可以使用其他平台提供的服务器。
+创建一个你的新云服务器，例如：[DigitalOcean](https://www.digitalocean.com/?refcode=5fa48ac82415) ，当然你也可以使用其他平台提供的服务器。
 
 - 默认配置 **当前版本的 LTS Ubuntu 操作系统** 能够很好的工作。最少，需要一个 64 位的 Linux 操作系统，并且这个操作系统的内核需要更新到最新的版本。
 
@@ -17,9 +17,11 @@
 
 - 默认配置 **New York** 数据中心针对北美和欧洲来说都是不错的地理分区，如果你的 Discourse 用户使用的对象多是其他地理位置的用户，那么你可以选择离你稍近的数据中心。
 
-- Enter your domain `discourse.example.com` as the Droplet name.
+- 输入域名 `discourse.example.com` 来在 DigitalOcean 中创建一个 Droplet（Droplet 是 DigitalOcean 定义的服务器名称）。当然你也可以购买使用你自己的域名，通常 Discourse 的安装需要一个真实的域名，没有办法通过 IP 地址安装，所以我们建议你首先购买域名或者使用你已有域名的二级域名。
 
-Create your new Droplet. You may receive an email with the root password, however, [you should set up SSH keys](https://www.google.com/search?q=digitalocean+ssh+keys), as they are more secure.
+创建你的新 Droplet，这个过程就等于你在 DigitalOcean 上创建了一个服务器，也等同你在其他平台上面创建了一个 VPS 或者服务器。
+当完成创建后，你将会收到一个电子邮件，这个电子邮件中有你的 Root 用户的密码。
+但是我们建议你 [设置使用 SSH keys](https://www.google.com/search?q=digitalocean+ssh+keys) ， 来增强你服务器访问的安全性。
 
 ### 访问你的云服务器
 
