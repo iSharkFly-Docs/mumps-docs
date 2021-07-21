@@ -1,4 +1,13 @@
 # Discourse 文档
+Discourse 文档是通过官方文档的整理翻译过来的，下面的内容与官方的内容基本一致。
+
+针对中文环境下的时候，我们对遇到的一些问题发布到我们的讨论区中以方便大家快速导航访问：
+
+- [Discourse CentOS 8 全新安装手册](https://www.ossez.com/t/discourse-centos-8/594) - 在 CentOS/RHEL 平台上全新安装 Discourse 的过程和命令。
+
+- [Discourse 如何不使用 Let’s Encrypt 而使用 CA 签名的密钥进行安装](https://www.ossez.com/t/discourse-lets-encrypt-ca/552) - 使用你自己已有的 CA 秘钥进行安装。
+
+- [Discourse 设置 GTM](https://www.ossez.com/t/discourse-gtm/13240) - 使用 Google 的标签管理器来插入需要的 JS 代码。
 
 ## 云平台安装
 **在基于云平台的 Discourse 安装通常不会超过 30 分钟**，哪怕你没有任何有关 Rails 或 Linux shell 的知识都能够顺利完成安装。
@@ -155,7 +164,7 @@ Options:
 
 下面的内容是一些快速的链接，能够帮助你扩展 Discourse 安装的功能：
 
-* Users to log in *only* via your pre-existing website's registration system? [Configure Single-Sign-On](https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045).
+- Users to log in *only* via your pre-existing website's registration system? [Configure Single-Sign-On](https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045).
 
 - 用户可以使用 [Google](https://www.ossez.com/t/discourse-google-google-login/13582), [Twitter](https://meta.discourse.org/t/configuring-twitter-login-for-discourse/13395), [GitHub](https://www.ossez.com/t/discourse-github/13562), or  [Facebook](https://meta.discourse.org/t/configuring-facebook-login-for-discourse/13394) 进行注册登录
 
