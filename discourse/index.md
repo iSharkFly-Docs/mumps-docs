@@ -136,8 +136,7 @@ Discourse 文档是通过官方文档的整理翻译过来的，下面的内容�
 - 如果你希望默认安装防火墙， 针对 Ubuntu [打开 ufw](https://meta.discourse.org/t/configure-a-firewall-for-discourse/20584) 或者针对 CentOS/RHEL 7 及其后续版本使用 `firewalld` 。
 
 当 Discourse 有新版本更新的时候，你的邮件地址将会收到更新提示。
-请随时更新你的 Discourse 实例到最新版本以确保所有的安全问题被修复。
-You will get email reminders as new versions of Discourse are released. Please stay current to get the latest features and security fixes. 
+请随时更新你的 Discourse 实例到最新版本以确保所有的安全问题被修复。 
 要 **更新 Discourse 到最新的版本**，请通过你的浏览器访问  `/admin/upgrade` 然后单击更新按钮。
 
 `/var/discourse` 目录中的 `launcher` 命令被用来使用一些系统级别的维护：
@@ -166,7 +165,7 @@ Options:
 
 - Users to log in *only* via your pre-existing website's registration system? [Configure Single-Sign-On](https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045).
 
-- 用户可以使用 [Google](https://www.ossez.com/t/discourse-google-google-login/13582), [Twitter](https://meta.discourse.org/t/configuring-twitter-login-for-discourse/13395), [GitHub](https://www.ossez.com/t/discourse-github/13562), or  [Facebook](https://meta.discourse.org/t/configuring-facebook-login-for-discourse/13394) 进行注册登录
+- 用户可以使用 [Google](https://www.ossez.com/t/discourse-google-google-login/13582), [Twitter](https://meta.discourse.org/t/configuring-twitter-login-for-discourse/13395), [GitHub](https://www.ossez.com/t/discourse-github/13562), or  [Facebook](https://meta.discourse.org/t/configuring-facebook-login-for-discourse/13394) 进行注册登录。
 
 - Users to post replies via email? [Configure reply via email](https://meta.discourse.org/t/set-up-reply-via-email-support/14003).
 
