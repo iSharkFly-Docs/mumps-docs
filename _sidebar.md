@@ -10,6 +10,7 @@
   - [JWT](jwt/README.md)
   - [MessagePack](message-pack/index.md)
   - [Protocol Buffers](protocol-buffers/index.md)
+  - [Discourse](discourse/index.md)
 
 - 面试和算法
   - [面试问题和经验](interview/index.md)
