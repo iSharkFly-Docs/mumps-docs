@@ -25,53 +25,60 @@
 
 ### 访问你的云服务器
 
-Connect to your server via its IP address using SSH, or [Putty][put] on Windows:
+通过使用 IP 地址，并使用 SSH 来连接和访问你创建的服务器，或者针对 Windows 平台你可以安装 [Putty][put] 后运行下面的命令来进行连接：
 
     ssh root@192.168.1.1
 
-Either use the root password from the email DigitalOcean sent you when the server was set up, or have a valid SSH key configured on your local machine.
+如果你没有配置 SSH Key 的话，你可以使用 DigitalOcean 发给你的电子邮件中包含的密码来进行登录，
+或者使用你本地的 SSH Key 来进行连接。
 
-### Install Docker / Git (Optional)
+### 安装 Docker / Git （可选的）
 
-If you have reason to install your own version of Docker, you may do so. If docker is not installed, `discourse-setup` will automatically install it from get.docker.com.
+如果你希望使用你自己的 Docker 版本，你可以现在在你新设置的服务器上进行安装。
+如果你的服务器上没有默认安装 Docker，那么 `discourse-setup` 将会自动为你从 get.docker.com 下载后进行安装。
 
-### Install Discourse
+### 安装 Discourse
 
-Clone the [Official Discourse Docker Image][dd] into `/var/discourse`.
+从 [官方 Discourse Docker 镜像][dd] 仓库中克隆代码到本地计算机的 `/var/discourse` 目录。
 
     sudo -s
     git clone https://github.com/discourse/discourse_docker.git /var/discourse
     cd /var/discourse
 
-You will need to be root through the rest of the setup and bootstrap process.
+你只需要执行上面的命令即可，在 Discourse 安装的过程中需要 root 权限。
 
-### Email
+### 电子邮件
 
-> ⚠️ **Email is CRITICAL for account creation and notifications in Discourse.** If you do not properly configure email before bootstrapping YOU WILL HAVE A BROKEN SITE!
+> ⚠️ **电子邮件系统在 Discourse 的用户创建过程中非常重要。** 
+> 如果你没有在安装 Discourse 之前创建电子邮件 SMTP 服务器，那么你安装的 Discourse 无法访问也无法登录（HAVE A BROKEN SITE）！
 
-- Already have a mail server? Great. Use your existing mail server credentials.
+- 如果你已经有你自己的 SMTP 邮件服务器了，那么你就可以直接使用你已有的邮件服务器配置信息。
 
-- No existing mail server? Check out our [**Recommended Email Providers for Discourse**][mailconfig].
+- 还有没有邮件服务器？请访问  [**Discourse 推荐使用的邮件服务器**][mailconfig].
 
-- To ensure mail deliverability, you must add valid [SPF and DKIM records](https://www.google.com/search?q=spf+dkim) in your DNS. See your mail provider instructions for specifics.
+- 为了确保你的邮件能够被正常投递，你必须在你的 DNS 中添加有效的 [SPF 和 DKIM 记录](https://www.google.com/search?q=spf+dkim) 。请访问你邮件服务提供商的文档如何设置这些信息。
 
-### Domain Name
+根据我们实际使用的情况，Discourse 的安装**必须**配置可用的域名和邮件服务器，针对中国境内的情况，你可以使用阿里云或者腾讯云提供的企业邮箱。
+通常我们建议你使用境外的邮件服务器，比如说 AWS 的 SES，或者 MailGun 都是不错的服务，你可能需要一张国际信用卡完成校验。
+但这一步是必须的，否则你的的 Discourse 无法完成安装。
 
-> 🔔 Discourse will not work from an IP address, you must own a domain name such as `example.com` to proceed.
+### 域名
 
-- Already own a domain name? Great. Select a subdomain such as `discourse.example.com` or `talk.example.com` or `forum.example.com` for your Discourse instance.
+> 🔔 Discourse 不能通过 IP 地址来工作，你必须拥有一个域名或者二级域名来进行安装，例如 `example.com` 。
 
-- No domain name? We can [recommend NameCheap](https://www.namecheap.com/domains/domain-name-search/), or there are many other [great domain name registrars](https://www.google.com/search?q=best+domain+name+registrars) to choose from.
+- 如果你已经拥有一个域名了，那么可以选择任何一个二级域名来进行安装，例如 `discourse.example.com` 或 `talk.example.com` 或 `forum.example.com` 来安装你的 Discourse 实例。
 
-- Your DNS controls should be accessible from the place where you purchased your domain name. Create a DNS [`A` record](https://support.dnsimple.com/articles/a-record/) for the `discourse.example.com` hostname in your DNS control panel, pointing to the IP address of your cloud instance where you are installing Discourse.
+- 还没有域名的话，你可以访问 [NameCheap](https://www.namecheap.com/domains/domain-name-search/) 网站来搜索你喜欢的域名，或者直接 Google 搜索 [great domain name registrars](https://www.google.com/search?q=best+domain+name+registrars) 来选择你喜欢的域名注册商。
 
-### Edit Discourse Configuration
+- 你的 DNS 控制台应该是能够访问的，在你购买域名后，你还需要访问你的 DNS 配置来配置 DNS。针对你安装的 Discourse 网站，你需要通过你的 DNS 创建一个 [`A` 记录](https://support.dnsimple.com/articles/a-record/) ，这个 A 记录需要将你要安装的域名指向到一个特定的 IP 地址。这个 IP 地址通常为你在第一步购买的服务器 IP 地址。
 
-Launch the setup tool at
+### 编辑 Discourse 配置
+
+通过下面的命令运行配置工具
 
     ./discourse-setup
 
-Answer the following questions when prompted:
+你需要根据下面的提示配置所有参数：
 
     Hostname for your Discourse? [discourse.example.com]: 
     Email address for admin account(s)? [me@example.com,you@example.com]: 
@@ -81,69 +88,76 @@ Answer the following questions when prompted:
     SMTP password? [pa$$word]: 
     Let's Encrypt account email? (ENTER to skip) [me@example.com]: 
 
-This will generate an `app.yml` configuration file on your behalf, and then kicks off bootstrap. Bootstrapping takes between **2-8 minutes** to set up your Discourse. If you need to change these settings after bootstrapping, you can run `./discourse-setup` again (it will re-use your previous values from the file) or edit `/containers/app.yml` manually with `nano` and then `./launcher rebuild app`, otherwise your changes will not take effect.
+上面的输入数据将会为你的 Discourse 实例创建一个  `app.yml` 文件，这个文件将会在安装进行后对你的 Discourse 实例进行配置。
+整个安装启动过程可能需要耗费 **2-8 分钟** 来为你的配置 Discourse。
+如果在安装完成后你还需要对你的配置进行修改，你可以再次运行  `./discourse-setup` 命令（这个命令将会把已经存在的 `app.yml` 文件重新载入）。
+或者你也可以手动直接编辑 `/containers/app.yml` 文件中的内容，然后再次运行 `./launcher rebuild app`，否则你的修改是不会生效的。
 
-### Start Discourse
+### 启动 Discourse
 
-Once bootstrapping is complete, your Discourse should be accessible in your web browser via the domain name `discourse.example.com` you entered earlier.
+一旦初始化安装配置完成后，你的 Discourse 示例应该可以通过你配置的域名 `discourse.example.com` 在浏览器上进行访问。
 
 <img src="https://www.discourse.org/images/install/17/discourse-congrats.png" width="650">
 
-### Register New Account and Become Admin
+### 注册一个新的管理员账号
 
-Register a new admin account using one of the email addresses you entered before bootstrapping.
+使用你再启动配置过程中输入的电子邮件地址来注册一个管理员账号。
 
 <img src="https://www.discourse.org/images/install/17/discourse-register.png" width="650">
 
 <img src="https://www.discourse.org/images/install/17/discourse-activate.png" width="650">
 
-(If you are unable to register your admin account, check the logs at `/var/discourse/shared/standalone/log/rails/production.log` and see our [Email Troubleshooting checklist](https://meta.discourse.org/t/troubleshooting-email-on-a-new-discourse-install/16326).)
+(如果你不能注册你的管理账号（Admin），请通过路径`/var/discourse/shared/standalone/log/rails/production.log` 检查日志，或者访问 [电子邮件问题检查列表](https://meta.discourse.org/t/troubleshooting-email-on-a-new-discourse-install/16326) 。)
 
-After registering your admin account, the setup wizard will launch and guide you through basic configuration of your Discourse.
+当你完成管理员账号的注册后，设置向导将会启动并指引你配置你的 Discourse 实例。
 
 <img src="https://www.discourse.org/images/install/17/discourse-wizard-step-1.png" width="650">
 
-After completing the setup wizard, you should see Staff topics and **READ ME FIRST: Admin Quick Start Guide**. This guide contains advice for further configuring and customizing your Discourse install.
+当完成所有的设置向导，你将会看到职员主题（Staff topics）和 **READ ME FIRST: Admin Quick Start Guide** 。
+这个配置向导将会包含有针对后续配置的的一些建议和如何对你的 Discourse 安装实例进行自定义配置。
 
 <img src="https://www.discourse.org/images/install/17/discourse-homepage.png">
 
-### Post-Install Maintenance
+### 安装后的维护
 
-- We strongly suggest you turn on automatic security updates for your OS. In Ubuntu use the `dpkg-reconfigure -plow unattended-upgrades` command. In CentOS/RHEL, use the [`yum-cron`](https://www.cyberciti.biz/faq/fedora-automatic-update-retrieval-installation-with-cron/) package.
-- If you are using a password and not a SSH key, be sure to enforce a strong root password. In Ubuntu use the `apt-get install libpam-cracklib` package. We also recommend `fail2ban` which blocks any IP addresses for 10 minutes that attempt more than 3 password retries.
+- 我们强烈建议打开你针对你操作系统的安全自动更新。在 Ubuntu 使用 `dpkg-reconfigure -plow unattended-upgrades` 命令。在 CentOS/RHEL，使用 [`yum-cron`](https://www.cyberciti.biz/faq/fedora-automatic-update-retrieval-installation-with-cron/) 包。
+- 如果你使用的是密码登录你的操作系统，而不是使用 SSH Key 的话，请确保你使用强密码。在 Ubuntu 使用 `apt-get install libpam-cracklib` 包。我们推荐使用 `fail2ban` ，这个将会对 3 次登录失败的 IP 地址禁止登录 10 分钟。
     - **Ubuntu**: `apt-get install fail2ban`
-    - **CentOS/RHEL**: `sudo yum install fail2ban` (requires [EPEL](https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/))
-- If you need or want a default firewall, [turn on ufw](https://meta.discourse.org/t/configure-a-firewall-for-discourse/20584) for Ubuntu or use `firewalld` for CentOS/RHEL 7 or later.
+    - **CentOS/RHEL**: `sudo yum install fail2ban` (需要 [EPEL](https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/))
+- 如果你希望默认安装防火墙， 针对 Ubuntu [打开 ufw](https://meta.discourse.org/t/configure-a-firewall-for-discourse/20584) 或者针对 CentOS/RHEL 7 及其后续版本使用 `firewalld` 。
 
-You will get email reminders as new versions of Discourse are released. Please stay current to get the latest features and security fixes. To **upgrade Discourse to the latest version**, visit `/admin/upgrade` in your browser and click the Upgrade button.
+当 Discourse 有新版本更新的时候，你的邮件地址将会收到更新提示。
+请随时更新你的 Discourse 实例到最新版本以确保所有的安全问题被修复。
+You will get email reminders as new versions of Discourse are released. Please stay current to get the latest features and security fixes. 
+要 **更新 Discourse 到最新的版本**，请通过你的浏览器访问  `/admin/upgrade` 然后单击更新按钮。
 
-The `launcher` command in the `/var/discourse` folder can be used for various kinds of maintenance:
+`/var/discourse` 目录中的 `launcher` 命令被用来使用一些系统级别的维护：
 
 ``` text
 Usage: launcher COMMAND CONFIG [--skip-prereqs] [--docker-args STRING]
 Commands:
-    start:      Start/initialize a container
-    stop:       Stop a running container
-    restart:    Restart a container
-    destroy:    Stop and remove a container
-    enter:      Use nsenter to get a shell into a container
-    logs:       View the Docker logs for a container
-    bootstrap:  Bootstrap a container for the config based on a template
-    rebuild:    Rebuild a container (destroy old, bootstrap, start new)
-    cleanup:    Remove all containers that have stopped for > 24 hours
+    start:      Start/initialize a container（启动/初始化容器）
+    stop:       Stop a running container（停止一个运行的容器）
+    restart:    Restart a container（重启容器）
+    destroy:    Stop and remove a container （停止然后删除一个容器）
+    enter:      Use nsenter to get a shell into a container （使用 nsenter 来访问容器内的 Shell）
+    logs:       View the Docker logs for a container（查看一个容器的日志）
+    bootstrap:  Bootstrap a container for the config based on a template（从配置模板中来启动一个容器的配置和初始化）
+    rebuild:    Rebuild a container (destroy old, bootstrap, start new)（重构一个容器，将会删除老的容器，初始一个容器，启动新的容器）
+    cleanup:    Remove all containers that have stopped for > 24 hours（针对停止运行超过 24 个小时的容器进行删除）
 
 Options:
-    --skip-prereqs             Don't check launcher prerequisites
-    --docker-args              Extra arguments to pass when running docker
+    --skip-prereqs             Don't check launcher prerequisites （不运行安装器的环境校验）
+    --docker-args              Extra arguments to pass when running docker （传递给容器内的额外参数）
 ```
 
-### Add More Discourse Features
+### 添加更多的 Discourse 特性
 
-Do you want...
+下面的内容是一些快速的链接，能够帮助你扩展 Discourse 安装的功能：
 
 * Users to log in *only* via your pre-existing website's registration system? [Configure Single-Sign-On](https://meta.discourse.org/t/official-single-sign-on-for-discourse/13045).
 
-- Users to log in via [Google](https://meta.discourse.org/t/configuring-google-oauth2-login-for-discourse/15858), [Twitter](https://meta.discourse.org/t/configuring-twitter-login-for-discourse/13395), [GitHub](https://meta.discourse.org/t/configuring-github-login-for-discourse/13745), or  [Facebook](https://meta.discourse.org/t/configuring-facebook-login-for-discourse/13394)?
+- 用户可以使用 [Google](https://www.ossez.com/t/discourse-google-google-login/13582), [Twitter](https://meta.discourse.org/t/configuring-twitter-login-for-discourse/13395), [GitHub](https://www.ossez.com/t/discourse-github/13562), or  [Facebook](https://meta.discourse.org/t/configuring-facebook-login-for-discourse/13394) 进行注册登录
 
 - Users to post replies via email? [Configure reply via email](https://meta.discourse.org/t/set-up-reply-via-email-support/14003).
 
