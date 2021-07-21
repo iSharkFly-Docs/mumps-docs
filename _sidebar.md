@@ -1,6 +1,6 @@
 - CWIKIUS 文档概述
   - [文档介绍和快速链接](README.md)
-  - [公众平台](CONTACT.md)
+  - [联系方式](CONTACT.md)
 
 - Java
   - [语言基础](java/fundamentals/index.md)
