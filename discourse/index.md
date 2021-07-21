@@ -106,26 +106,26 @@ Discourse 文档是通过官方文档的整理翻译过来的，下面的内容�
 
 一旦初始化安装配置完成后，你的 Discourse 示例应该可以通过你配置的域名 `discourse.example.com` 在浏览器上进行访问。
 
-<img src="https://www.discourse.org/images/install/17/discourse-congrats.png" width="650">
+<img src="https://cdn.ossez.com/discourse-uploads/optimized/2X/8/8db53b9128ec4fb74872bdb7c1231ff04d525218_2_616x500.png" width="650">
 
 ### 注册一个新的管理员账号
 
 使用你再启动配置过程中输入的电子邮件地址来注册一个管理员账号。
 
-<img src="https://www.discourse.org/images/install/17/discourse-register.png" width="650">
+<img src="https://cdn.ossez.com/discourse-uploads/original/2X/9/99476eac0ffa4aa3a923aa7ae864fedf546dab0a.png" width="650">
 
-<img src="https://www.discourse.org/images/install/17/discourse-activate.png" width="650">
+<img src="https://cdn.ossez.com/discourse-uploads/original/2X/5/58660d377a00d9797be8b74036ace9d0ebf57fff.png" width="650">
 
 (如果你不能注册你的管理账号（Admin），请通过路径`/var/discourse/shared/standalone/log/rails/production.log` 检查日志，或者访问 [电子邮件问题检查列表](https://meta.discourse.org/t/troubleshooting-email-on-a-new-discourse-install/16326) 。)
 
 当你完成管理员账号的注册后，设置向导将会启动并指引你配置你的 Discourse 实例。
 
-<img src="https://www.discourse.org/images/install/17/discourse-wizard-step-1.png" width="650">
+<img src="https://cdn.ossez.com/discourse-uploads/original/2X/9/944509dd0c049a2cec42d6108369fa5cf5d92d0d.png" width="650">
 
 当完成所有的设置向导，你将会看到职员主题（Staff topics）和 **READ ME FIRST: Admin Quick Start Guide** 。
 这个配置向导将会包含有针对后续配置的的一些建议和如何对你的 Discourse 安装实例进行自定义配置。
 
-<img src="https://www.discourse.org/images/install/17/discourse-homepage.png">
+<img src="https://cdn.ossez.com/discourse-uploads/original/2X/8/8a60bc840705aaa1fc77b039a7babf77d6b4a10b.png" width="650">
 
 ### 安装后的维护
 
