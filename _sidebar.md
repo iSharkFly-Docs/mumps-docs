@@ -3,8 +3,8 @@
   - [联系方式](CONTACT.md)
 
 - Java
+  - [概述和环境配置](java/index.md)
   - [语言基础](java/fundamentals/index.md)
-  - [Gradle](gradle.md)
   
 - 其他小工具
   - [JWT](jwt/README.md)
@@ -16,5 +16,5 @@
   - [面试问题和经验](interview/index.md)
   - [算法题](algorithm/index.md)
   
-- [Awesome docsify](awesome.md)
+- [DOCS.OSSEZ.COM](https://docs.ossez.com/#/)
 - [Changelog](changelog.md)
