@@ -5,6 +5,7 @@
 - Java
   - [概述和环境配置](java/index.md)
   - [语言基础](java/fundamentals/index.md)
+  - [核心编程](java/core/index.md)
   
 - 其他小工具
   - [JWT](jwt/README.md)
