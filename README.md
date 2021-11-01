@@ -27,6 +27,7 @@ GitHub 上有关 CWIKIUS 的项目：[https://github.com/cwiki-us-docs/cwikius-d
 | 网站名称  | URL  | NOTE  |
 |---|---|---|
 | Apache Druid 技术手册  | https://druid.ossez.com/  | Druid 手册的在线翻译版本 |
+| Amazon OpenSearch 技术手册  | https://opensearch.ossez.com/  | OpenSearch 手册的在线翻译版本 |
 
 
 ### 容器 docker
