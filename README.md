@@ -13,14 +13,16 @@ GitHub 上有关 CWIKIUS 的项目：[https://github.com/cwiki-us-docs/cwikius-d
 
 | 网站名称  | URL  | NOTE  |
 |---|---|---|
-| [github.io](https://cwiki-us-docs.github.io/cwikius-docs/#/)  | [https://cwiki-us-docs.github.io/cwikius-docs/#/](https://cwiki-us-docs.github.io/cwikius-docs/#/)  | 本手册的编译版本将会部署在这个链接上  |
+| DOCS.OSSEZ.COM  | [https://cwiki-us-docs.github.io/cwikius-docs/#/](https://cwiki-us-docs.github.io/cwikius-docs/#/)  | 本手册的编译版本将会部署在这个链接上  |
 | WWW.CWIKIUS.CN  | [http://www.cwikius.cn/](http://www.cwikius.cn/)  | CWIKIUS.CN 一个有独立思考和温度的清新站  |
 
 ### 前端和 UI
 | 网站名称  | URL  | NOTE  |
 |---|---|---|
-| 前端端技术社区  | https://www.ossez.com/c/toolkit-algorithm-computer-science/web-front-end/26  | 计算机相关的前端框架和讨论 |
+| 前端技术社区  | https://www.ossez.com/c/toolkit-algorithm-computer-science/web-front-end/26  | 计算机相关的前端框架和讨论 |
+| TypeScript 文档手册  | https://typescript.ossez.com/  | TypeScript 相关技术文档和手册|
 | Angular 技术手册  | https://angular.ossez.com/  | Angular 手册的在线翻译版本，从源代码中进行编译 |
+| TypeScript 文档手册  | https://typescript.ossez.com/  | TypeScript 相关技术文档和手册|
 
 
 ### 后端和数据层
