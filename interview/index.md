@@ -17,6 +17,9 @@
 最新的内容在最前面（按照时间倒序排序）。
 
 ### 2021
+* [美东某 IoT 公司技术流程第一轮沟通就挂了](https://www.ossez.com/t/iot/13815)
+* [2021 年美东地区 IoT 公司的一次失败面试](https://www.ossez.com/t/2021-iot/13791)
+* [2021 年一次比较奇葩的 AWS 面试](https://www.ossez.com/t/2021-aws/13788)
 * [2021 疫情期间美国公司技术岗的面试流程](https://www.ossez.com/t/topic/13463)
 * [从拒绝到被拒绝](https://www.ossez.com/t/topic/13462)
 * [从一个工作到一个工作](https://www.ossez.com/t/topic/13461)
