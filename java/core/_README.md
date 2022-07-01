@@ -4,4 +4,6 @@
 
 [](core-java-8.md ':include')
 
+[](core-java-11.md ':include')
+
 [](core-java-strings.md ':include')
