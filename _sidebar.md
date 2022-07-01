@@ -3,9 +3,10 @@
   - [联系方式](CONTACT.md)
 
 - Java
-  - [概述和环境配置](java/index.md)
-  - [语言基础](java/fundamentals/index.md)
-  - [核心编程](java/core/index.md)
+  - [概述和环境配置](java/_README.md)
+  - [核心编程](java/core/_README.md)
+  - [语言基础](java/fundamentals/_README.md)
+  
   
 - 其他小工具
   - [JWT](jwt/README.md)
