@@ -18,6 +18,7 @@
   - [面试问题和经验](interview/index.md)
   - [算法题](algorithm/index.md)
 
-- [WWW.OSSEZ.COM](https://www.ossez.com/categories)  
-- [DOCS.OSSEZ.COM](https://docs.ossez.com/#/)
-- [WWW.CWIKI.US](https://www.cwiki.us/)
+- 快速导航
+  - [WWW.OSSEZ.COM](https://www.ossez.com/categories)  
+  - [DOCS.OSSEZ.COM](https://docs.ossez.com/#/)
+  - [WWW.CWIKI.US](https://www.cwiki.us/)
