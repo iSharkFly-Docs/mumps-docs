@@ -1,12 +1,12 @@
 
 有关本文档的快速链接，请参考页面提示:
 
-| 链接名称 | URL | 内容说明 |
-|---|---|---|
-| GitHub MD 源代文件 | https://github.com/cwiki-us-docs/cwikius-docs/blob/master/jwt/README.md |  将本页面中的内容转换为 MD 文件的手册，并存于 Github 上面|
-| Docsify 转换后的手册 | https://cwiki-us-docs.github.io/cwikius-docs/#/jwt/README |  将 MD 文件使用 Docsify 转换后的手册链接地址 |
-| 问题讨论和社区 | https://www.ossez.com/tag/jwt |  请访问使用 JWT 标签 |
-| CWIKI.US 页面链接 | https://www.cwiki.us/display/CWIKIUSDOCS/JWT+-+JSON+Web+Token|  Confluence 平台的原始翻译文件更新地址 |
+| 链接名称           | URL                                                                     | 内容说明                               |
+|----------------|-------------------------------------------------------------------------|------------------------------------|
+| GitHub MD 源代文件 | https://github.com/cwiki-us-docs/cwikius-docs/blob/master/jwt/README.md | 将本页面中的内容转换为 MD 文件的手册，并存于 Github 上面 |
+| Docsify 转换后的手册 | https://cwiki-us-docs.github.io/cwikius-docs/#/jwt/README               | 将 MD 文件使用 Docsify 转换后的手册链接地址       |
+| 问题讨论和社区        | https://www.ossez.com/tag/jwt                                           | 请访问使用 JWT 标签                       |
+| CWIKI.US 页面链接  | https://www.cwiki.us/display/CWIKIUSDOCS/JWT+-+JSON+Web+Token           | Confluence 平台的原始翻译文件更新地址           |
 
 **NEW:** 获得 [免费的 JWT 手册（JWT Handbook）](https://auth0.com/resources/ebooks/jwt-handbook) 同时学习更多有关 JWT 的内容！
 
