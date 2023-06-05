@@ -15,7 +15,7 @@
 如想参与支持相关的讨论和分享你的一些经验，请访问 https://www.ossez.com/c/37-category/jobs/19 页面中的内容，我们热忱的期待您的参与和分享。
 
 ## 相关文章列表
-
+* [公司大规模裁员的时间轴](https://www.ossez.com/t/topic/14472)
 * [来聊聊才离职就被拉黑禁用的这些事](https://www.ossez.com/t/topic/14469)
 * [公司裁员日常的骚操作和警告](https://www.ossez.com/t/topic/14465)
 * [上一年工作中猫腻的总结](https://www.ossez.com/t/topic/14464)
