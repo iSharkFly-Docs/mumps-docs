@@ -24,7 +24,8 @@
   - [算法题](algorithm/index.md)
 - 
 - 求职
-  - [面试问题和经验](interview/index.md)
+  - [职场](work/workplace/index.md)
+  - [面试问题和经验](work/interview/index.md)
 
 - 快速导航
   - [WWW.CWIKI.US](https://www.cwiki.us/)

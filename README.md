@@ -1,10 +1,34 @@
 # CWIKIUS 文档和手册
 
-欢迎来到 CWIKIUS 文档和手册的空间
+欢迎来到 HoneyMoose 文档和手册的空间
 
-GitHub 上有关 CWIKIUS 的项目：[https://github.com/cwiki-us-docs/cwikius-docs](https://github.com/cwiki-us-docs/cwikius-docs)
+GitHub 上有关 HoneyMoose 的项目：[https://github.com/honeymoose/cwikius-docs](https://github.com/honeymoose/cwikius-docs)
 
 [联系我们](CONTACT.md ':include')
+
+## 如何运行文档
+本文档是通过 docsify 进行编译和安装的。
+
+### 安装 docsify
+如果你的计算机还没有安装 docsify 的话，请运行命令  `npm i docsify-cli -g` 来进行安装。
+
+### 校验安装结果
+运行命令 `docsify -version` 来校验安装结果，界面上应该显示：
+
+```text
+docsify-cli version:
+  4.4.3
+```
+
+### 运行 docsify
+如果你希望在你的本地计算机上查看本文档，请运行  `docsify serve ./` ， 在你的控制台上将会有下面的内如输出：
+
+```text
+PS C:\WorkDir\Repository\Cwikius-Docs\cwikius-docs> docsify serve ./
+
+Serving C:\WorkDir\Repository\Cwikius-Docs\cwikius-docs now.
+Listening at http://localhost:3000
+```
 
 ## CWIKIUS 文档和手册快速导航
 
