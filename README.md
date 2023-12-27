@@ -1,8 +1,8 @@
-# CWIKIUS 文档和手册
+# MUMPS 文档
 
-欢迎来到 HoneyMoose 文档和手册的空间
+欢迎来到 MUMPS 文档和手册。
 
-GitHub 上有关 HoneyMoose 的项目：[https://github.com/honeymoose/cwikius-docs](https://github.com/honeymoose/cwikius-docs)
+GitHub 上有关 HoneyMoose 的项目：[https://github.com/iSharkFly-Docs/mumps-docs](https://github.com/iSharkFly-Docs/mumps-docs)
 
 [联系我们](CONTACT.md ':include')
 
