@@ -1,4 +1,4 @@
-- MUMPSS 文档概述
+- MUMPS 文档概述
   - [文档介绍和快速链接](README.md)
   - [联系方式](CONTACT.md)
 
@@ -18,6 +18,6 @@
   - [Protocol Buffers](protocol-buffers/index.md)
 
 - 导航
-  - [WWW.ISHARKFLY.US](https://www.iSharkfly.com/)
-    - [DOCS.ISHARKFLY.COM](https://docs.iSharkfly.com/#/)
+  - [WWW.ISHARKFLY.COM](https://www.isharkfly.com/tag/mumps)
+  - [MUMPS.ISHARKFLY.COM](https://mumps.isharkfly.com/#/)
   
